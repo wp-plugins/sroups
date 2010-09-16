@@ -40,7 +40,7 @@ define("SROUPS_VERISON", "0.1");
 define("SROUPS_REQUIRED_PHP_VERSION", "5.1.3");
 define("SROUPS_HAS_MOD_HEADERS", in_array("mod_headers", sr_apache_get_modules()));
 define("SROUPS_SWF_PATH", "http://core.srou.ps/sroups.js");
-//define("SROUPS_SWF_PATH", "http://localhost/sroups/sroups.js");
+//define("SROUPS_SWF_PATH", "http://localhost/sroups.web/public/sroups.js");
 
 /* UTILITY FUCTIONS */
 
@@ -1097,7 +1097,7 @@ XHTML;
             _sr.getJSON(getPostUrl() + "?url=" + Url.encode(Base64.encode(getUrl("/index/package"))), function(data) {
                 _sr.each(data, function(k, v) {
                     _sr("fieldset#fs_sroups_package").append(
-                        _sr("<label>").html('<input type="radio" value="' + v.id + '" name="sr_create_package" />' + v.description + '</label>')
+                        _sr("<label>").html('<input type="radio" value="' + v.id + '" name="sr_create_package" id="sr_create_package" />' + v.description + '</label>')
                     ).append(_sr("<br />")); 
                 });
                 _sr("fieldset#fs_sroups_package label:eq(0)").children("input").attr("checked", "checked");
@@ -1105,7 +1105,7 @@ XHTML;
             _sr.getJSON(getPostUrl() + "?url=" + Url.encode(Base64.encode(getUrl("/index/theme"))), function(data) {
                 _sr.each(data, function(k, v) {
                     _sr("fieldset#fs_sroups_theme").append(
-                        _sr("<label>").html('<input type="radio" value="' + v.id + '" name="sr_create_theme" />' + v.name + '</label>')
+                        _sr("<label>").html('<input type="radio" value="' + v.id + '" name="sr_create_theme" id="sr_create_theme" />' + v.name + '</label>')
                     ).append(_sr("<br />")); 
                 });
                 _sr("fieldset#fs_sroups_theme label:eq(0)").children("input").attr("checked", "checked");
