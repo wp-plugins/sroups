@@ -38,7 +38,7 @@ define('SROUPS_API_URL', 'http://srou.ps/api');
 define("SROUPS_VERISON", "0.1");
 define("SROUPS_REQUIRED_PHP_VERSION", "5.1.3");
 define("SROUPS_HAS_MOD_HEADERS", in_array("mod_headers", sr_apache_get_modules()));
-define("SROUPS_SWF_PATH", "http://core.srou.ps/sroups.js");
+define("SROUPS_SWF_PATH", "http://srou.ps/sroups.js");
 
 /* UTILITY FUCTIONS */
 
@@ -116,8 +116,10 @@ function sr_createClientElements($sroupsFlashClient) {
     // add event handler to the click event of the band element that toggles
     // Sroups screen
     $outputBuffer .= <<<JS
+<script type="text/javascript" src="/wp-content/plugins/sroups/js/jquery-ui-1.8.5.custom.min.js"></script>
 <script type="text/javascript">
 $(function() {
+    $(".os_sroups").draggable({handle: '.os_sroups_header'});    
     $(".open_sroups").click(function(ev){
         ev.preventDefault();
         $('.os_sroups').toggle();
@@ -147,9 +149,10 @@ body {
     border:1px solid #CCCCCC;
     bottom:0;
     float:left;
-    margin:0 5px 10px 0;
-    position:fixed;
+    margin:0 5px 22px 0;
+    position:absolute;
     right:0;
+    height: 645px;
     width:780px;
 }
 .os_sroups_header {
@@ -195,16 +198,6 @@ CSS;
 </div>
 <div class="os_footerband"><a class="open_sroups" href="#">Sroups</a></div>
 XHTML;
-
-    // Include jQuery UI plugin
-    $outputBuffer .= <<<JS
-<script type="text/javascript" src="/wp-content/plugins/sroups/js/jquery-ui-1.8.5.custom.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $(".os_sroups").css('bottom', 'inherit').draggable();    
-});
-</script>
-JS;
 
     // add buffer content into the document
     echo $outputBuffer;
