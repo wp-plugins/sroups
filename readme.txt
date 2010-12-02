@@ -1,6 +1,6 @@
 === Sroups ===
 Contributors: oyunstudyosu
-Tags: sroups, virtual world, chat
+Tags: sroups, virtual world, chat, game, online world
 Requires at least: 3.0
 Tested up to: 3.0.1
 Stable tag: 0.0.3

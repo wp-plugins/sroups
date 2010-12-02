@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Sroups
-Plugin URI: http://dev.srou.ps/plugins/wordpress
+Plugin URI: http://srou.ps
 Description: Sroups virtualizes the groups in a way that has never done before.
 In a few minutes, the members of your groups gets access to a virtual world
 specifically created for your community.

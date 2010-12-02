@@ -33,7 +33,7 @@
        
         $res->entry = json_decode($obj);
        
-      } elseif($protocolParam == 'mediaitems') {
+      } elseif($protocolParam == 'mediaItems') {
         $req = new SOS_Request_MediaItems($this);
         $obj = $req->execute(false);
 
