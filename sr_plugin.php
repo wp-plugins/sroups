@@ -6,7 +6,7 @@ Description: Sroups virtualizes the groups in a way that has never done before.
 In a few minutes, the members of your groups gets access to a virtual world
 specifically created for your community.
 Author: Oyun Studyosu
-Version: 0.0.3
+Version: 0.0.4
 Author URI: http://oyunstudyosu.com
 */
 
@@ -113,10 +113,12 @@ function sr_createClientElements($sroupsFlashClient) {
     // TODO: check whether jquery is already imported or not
     $outputBuffer .= '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>';
 
+	$baseUrl = get_bloginfo('url');
+
     // add event handler to the click event of the band element that toggles
     // Sroups screen
     $outputBuffer .= <<<JS
-<script type="text/javascript" src="/wp-content/plugins/sroups/js/jquery-ui-1.8.5.custom.min.js"></script>
+<script type="text/javascript" src="$baseUrl/wp-content/plugins/sroups/js/jquery-ui-1.8.5.custom.min.js"></script>
 <script type="text/javascript">
 $(function() {
     $(".os_sroups").draggable({handle: '.os_sroups_header'});    
@@ -136,13 +138,6 @@ JS;
     // add styles for the band and Sroups elements
     $outputBuffer .= <<<CSS
 <style type="text/css">
-body {
-    background-color: #F1F1F1;
-    background-image: url('$sroupsBackgroud');
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-position: bottom right;
-}
 .os_sroups {
     display:none;
     background:none repeat scroll 0 0 #FFFFFF;

@@ -1,14 +1,15 @@
 <?php
-/* 
- * Please see Oyun Studyosu License file
- */
+
+  /*
+   * Please see Oyun Studyosu License file
+   */
 
   require_once(APP_PATH . '/SOS/Service/MediaItem.php');
   require_once(APP_PATH . '/SOS/Model/MediaItem.php');
   require_once(APP_PATH . '/SOS/Request/Guid.php');
 
-  class MediaItemHandler implements SOS_Service_MediaItem
-  {
+  class MediaItemHandler implements SOS_Service_MediaItem {
+
     /**
      *
      * @param SOS_Request_Guid $guid
@@ -37,4 +38,15 @@
 
       return $mitems;
     }
+
+    /**
+     *
+     * @param SOS_Request_Guid $guid
+     * @param SOS_Model_MediaItem $item
+     * @return boolean
+     */
+    public function addMediaItem(SOS_Request_Guid $guid, SOS_Model_MediaItem $item) {
+      return TRUE;
+    }
+
   }

@@ -23,6 +23,13 @@
       $this->_fields[$key] = $value;
     }
 
+    protected function getField($key) {
+      if(isset($this->_fields[$key]))
+        return $this->_fields[$key];
+      else
+        return null;
+    }
+
     /**
      * Returns string in JSON notation
      * @return String

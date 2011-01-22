@@ -8,6 +8,7 @@
   require_once(APP_PATH . '/SOS/Request/Environment.php');
   require_once(APP_PATH . '/SOS/Service/NotImplementedException.php');
   require_once(APP_PATH . '/SOS/SAuth.php');
+  require_once(APP_PATH . '/SOS/Request/Method.php');
   
 
   class SOS_Protocol_DataService extends SOS_Protocol_Abstract
@@ -24,18 +25,23 @@
       $sauth->authenticate(); // throws exception if fails
 
       $protocolParam = strtolower($this->getProtocolParam());
-
+      
       $res = new stdClass();
       $obj = "";
-      if($protocolParam == 'people') {
+      if($protocolParam == 'people.get' || $protocolParam == 'people') {
         $req = new SOS_Request_People($this);
         $obj = $req->execute(false);
        
         $res->entry = json_decode($obj);
        
-      } elseif($protocolParam == 'mediaItems') {
+      } elseif(strtolower ($protocolParam) == 'mediaitems') {
         $req = new SOS_Request_MediaItems($this);
-        $obj = $req->execute(false);
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $obj = $req->execute(SOS_Request_Method::MEDIAITEMS_ADDITEM, false);
+        } else {
+            $obj = $req->execute(SOS_Request_Method::MEDIAITEMS_GETITEMS, false);
+        }
+        
 
         $res = new stdClass();
         $res->entry = json_decode($obj);

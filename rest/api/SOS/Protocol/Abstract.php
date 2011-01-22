@@ -142,6 +142,13 @@
       return $this->getParam();
     }
 
+    public function getPost($name) {
+        if(isset($_POST[$name]))
+          return htmlentities($_POST[$name],ENT_QUOTES);
+        else
+          return null;
+    }
+
     private function _getProtocolHelper($index) {
       $res = $this->getParam($index);
       if(!$res)
@@ -159,6 +166,10 @@
 
     public function getScopeParam() {
       return $this->getParam(2);
+    }
+
+    public function getAlbumIdParam() {
+      return $this->getParam(3);
     }
 
     public function useQuerystring($_useQuerystring) {

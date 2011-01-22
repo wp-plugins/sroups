@@ -12,4 +12,6 @@
      * @return array of SOS_Model_MediaItem
      */
     public function getMediaItems(SOS_Request_Guid $guid);
+
+    public function addMediaItem(SOS_Request_Guid $guid, SOS_Model_MediaItem $item);
   }

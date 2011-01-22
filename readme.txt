@@ -3,7 +3,7 @@ Contributors: oyunstudyosu
 Tags: sroups, virtual world, chat, game, online world
 Requires at least: 3.0
 Tested up to: 3.0.1
-Stable tag: 0.0.3
+Stable tag: 0.0.4
 
 Sroups virtualizes your blog in a few minutes by allowing its members access to
 a virtual world specifically created for your community.
@@ -35,6 +35,10 @@ form and click "Make me a Sroups owner" button.
 7. Your Sroups is ready! You can use Sroups as a page or a footer button!
 
 == Changelog ==
+
+= 0.0.4 =
+Fixed minor bugs
+Updated Sroups SOS library
 
 = 0.0.3 =
 Made the Sroups window draggable

@@ -18,16 +18,18 @@
       $this->_guid =
               new SOS_Request_Guid(
                       $this->getProtocol()->getGuidParam(),
-                      array(SOS_Request_Guid::COMMUNITY));
+                      array(SOS_Request_Guid::ME),
+                      $this->getProtocol()->getScopeParam());
 
       $scope = $this->getProtocol()->getScopeParam();
+      
       if($scope) {
         if(!is_string($scope)) {
           throw new SOS_Request_InvalidException("Invalid Scope");
         }
-
+        
         // check if it begins with "@"
-        if(strpos("@", $scope) != 1) {
+        if($scope[0] != "@") {
           throw new SOS_Request_InvalidException("Invalid Scope");
         }
 
@@ -55,14 +57,32 @@
      * @param boolean $json
      * @return String jsonObject
      */
-    public function execute($json = true) {
-      $mediaItemService = SOS_Factory::getMediaItemService();
-      $mediaItems = $mediaItemService->getMediaItems($this->_guid);
+    public function execute($method = SOS_Request_Method::MEDIAITEMS_GETITEMS, $json = true) {
 
-      $arr = array();
-      foreach($mediaItems as $m)
-        array_push($arr, $m->getObject());
+        if(SOS_Request_Method::MEDIAITEMS_GETITEMS == $method) {
+            $mediaItemService = SOS_Factory::getMediaItemService();
+              $mediaItems = $mediaItemService->getMediaItems($this->_guid);
 
-      return json_encode( $arr );
+              $arr = array();
+              foreach($mediaItems as $m)
+                array_push($arr, $m->getObject());
+
+              return json_encode( $arr );
+        } elseif (SOS_Request_Method::MEDIAITEMS_ADDITEM == $method) {
+            $mediaItemService = SOS_Factory::getMediaItemService();
+            $mediaItem = new SOS_Model_MediaItem();
+            $mediaItem->setId($this->getProtocol()->getPost('id'));
+            $mediaItem->setDescription($this->getProtocol()->getPost('description'));
+            $mediaItem->setThumbnailUrl($this->getProtocol()->getPost('thumbnailUrl'));
+            $mediaItem->setTitle($this->getProtocol()->getPost('title'));
+            $mediaItem->setType($this->getProtocol()->getPost('type'));
+            $mediaItem->setUrl($this->getProtocol()->getPost('url'));
+
+            return $mediaItemService->addMediaItem($this->_guid, $mediaItem);
+        } elseif (SOS_Request_Method::MEDIAITEMS_ADDITEM == $method) {
+            throw new Exception("Not implemented yet");
+        }
+
+      
     }
   }

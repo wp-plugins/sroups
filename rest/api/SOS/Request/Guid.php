@@ -13,11 +13,13 @@
     const ME        = "@me";
     const OWNER     = "@owner";
     const USERID    = "@userId";
-    const COMMUNITY = "@community";
+    //const COMMUNITY = "@community";
 
     private $_type = null;
 
     private $_userId = null;
+
+    private $_groupId = null;
 
     /**
      * if $param is integer, than sets it as the userId
@@ -25,7 +27,7 @@
      * @param integer | String $param
      * @param array $validTypes
      */
-    public function  __construct($param, array $validTypes = null) {
+    public function  __construct($param, array $validTypes = null, $groupId = null) {
       if(is_numeric($param)) {
         $this->setUserId($userId);
         return;
@@ -59,6 +61,14 @@
 
     public function getUserId() {
       return $this->_userId;
+    }
+
+    public function getGroupId() {
+      return $this->_groupId;
+    }
+
+    public function setGroupId($groupId) {
+      $this->_groupId = $groupId;
     }
 
   }

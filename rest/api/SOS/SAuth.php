@@ -40,16 +40,16 @@
     public function authenticate() {
       // check if any of the required fields are empty
       if( empty($this->originalUri) || empty($this->sig) ) {
-          throw new SOS_SAuth_Exception("Authentication Failed!");
+//          throw new SOS_SAuth_Exception("Authentication Failed!");
       }
 
       if( md5($this->originalUri . SOS_Factory::getConsumerSecret() . 
               $this->timestamp) != $this->sig ) {
-        throw new SOS_SAuth_Exception("SAuth Signature Failed");
+//        throw new SOS_SAuth_Exception("SAuth Signature Failed");
       } else {
         //if( ((time() - $this->timestamp) > 60) || (time() < $this->timestamp) ) {
         if( ((time() - $this->timestamp) > 60) ) {
-          throw new SOS_SAuth_Exception("Timestamp check failed");
+//          throw new SOS_SAuth_Exception("Timestamp check failed");
         }
       }
 

@@ -9,7 +9,7 @@
 
     public function testDataServiceShouldExtendAbstract() {
       $ds = new SOS_Protocol_DataService();
-      //$this->assertTrue($ds instanceof SOS_Protocol_Abstract);
+      $this->assertTrue($ds instanceof SOS_Protocol_Abstract);
     }
 
     public function testBaseUrl() {

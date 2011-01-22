@@ -6,6 +6,8 @@
 /** Include the bootstrap for setting up WordPress environment */
 require_once( dirname(__FILE__) . '/../../../../wp-load.php' );
 require_once( ABSPATH . '/wp-includes/pluggable.php' );
+require_once(ABSPATH . '/wp-includes/post.php' );
+require_once(ABSPATH . '/wp-admin/includes/image.php' );
 
 require_once('api/config/Bootstrap.php');
 require_once('api/config/utils.php');

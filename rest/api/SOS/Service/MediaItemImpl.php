@@ -56,4 +56,15 @@
     public function getMediaItems(SOS_Request_Guid $guid) {
       return $this->getDelegator()->getMediaItems($guid);
     }
+
+    /**
+     *
+     * @param SOS_Request_Guid $guid
+     * @param SOS_Model_MediaItem $item
+     * @return true
+     */
+    public function addMediaItem(SOS_Request_Guid $guid, SOS_Model_MediaItem $item) {
+        return $this->getDelegator()->addMediaItem($guid, $item);
+    }
+
   }

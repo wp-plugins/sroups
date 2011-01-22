@@ -11,6 +11,11 @@
     const FIELD_TITLE         = 'title';
     const FIELD_DESCRIPTION   = 'description';
     const FIELD_THUMBNAILURL  = 'thumbnailUrl';
+    const FIELD_TYPE          = "type";
+
+    const TYPE_IMAGE          = "image";
+    const TYPE_VIDEO          = "video";
+    const TYPE_AUDIO          = "audio";
 
     public function  __construct() {}
 
@@ -32,6 +37,10 @@
 
     public function setThumbnailUrl($thumbnailUrl) {
       $this->setField(self::FIELD_THUMBNAILURL, $thumbnailUrl);
+    }
+
+    public function setType($type) {
+        $this->setField(self::FIELD_TYPE, $type);
     }
 
   }
