@@ -6,7 +6,7 @@ Description: Sroups virtualizes the groups in a way that has never done before.
 In a few minutes, the members of your groups gets access to a virtual world
 specifically created for your community.
 Author: Oyun Studyosu
-Version: 0.0.5
+Version: 0.0.6
 Author URI: http://oyunstudyosu.com
 */
 
@@ -165,20 +165,29 @@ JS;
 .os_footerband {
     background: transparent url('$sroupsButtonBackground') no-repeat top left;
     bottom:0;
-    height:22px;
-    padding:0 10px;
+    height:31px;
+    padding:0;
     position:fixed;
     right:15px;
     text-align:left;
-    width:40px;
+    width:92px;
+    z-index: 9999;
 }
 .os_footerband a, .os_footerband a:visited {
     color: #FFFFFF;
-    padding-right:10px;
     text-decoration: none;
+    width: 92px;
+    height: 31px;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 .os_footerband a:hover {
     color: #FFFFFF;
+}
+.os_footerband a span {
+    display: none;
 }
 </style>
 CSS;
@@ -189,7 +198,7 @@ CSS;
     <div class="os_sroups_header"><a class="open_sroups" href="#">X</a></div>
     <div class="os_sroups_inner">$sroupsFlashClient</div>
 </div>
-<div class="os_footerband"><a class="open_sroups" href="#">Sroups</a></div>
+<div class="os_footerband"><a class="open_sroups" href="#sroups"><span>Sroups</span></a></div>
 XHTML;
 
     // add buffer content into the document
@@ -1665,3 +1674,4 @@ function sr_admin_deactivation() {
     // delete if there is a sroups page
     sr_disableSroupsPage();
 }
+
