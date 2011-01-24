@@ -6,7 +6,7 @@ Description: Sroups virtualizes the groups in a way that has never done before.
 In a few minutes, the members of your groups gets access to a virtual world
 specifically created for your community.
 Author: Oyun Studyosu
-Version: 0.0.4
+Version: 0.0.5
 Author URI: http://oyunstudyosu.com
 */
 
@@ -131,9 +131,7 @@ $(function() {
 </script>
 JS;
 
-    $stylesheetUrl = get_stylesheet_directory_uri();
-    $sroupsButtonBackgroud = $stylesheetUrl . '/images/altbutton.png';
-    $sroupsBackgroud = $stylesheetUrl . '/images/arrow.png';
+    $sroupsButtonBackground = $baseUrl . '/wp-content/plugins/sroups/images/sroups_footer_logo.png';
 
     // add styles for the band and Sroups elements
     $outputBuffer .= <<<CSS
@@ -165,7 +163,7 @@ JS;
     padding:10px;
 }
 .os_footerband {
-    background: transparent url('$sroupsButtonBackgroud') no-repeat top left;
+    background: transparent url('$sroupsButtonBackground') no-repeat top left;
     bottom:0;
     height:22px;
     padding:0 10px;
