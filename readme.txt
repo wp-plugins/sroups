@@ -3,7 +3,7 @@ Contributors: oyunstudyosu
 Tags: sroups, virtual world, chat, game, online world
 Requires at least: 3.0
 Tested up to: 3.0.1
-Stable tag: 0.0.6
+Stable tag: 0.0.7
 
 Sroups virtualizes your blog in a few minutes by allowing its members access to
 a virtual world specifically created for your community.
@@ -26,15 +26,19 @@ For more information about Sroups, see also: http://srou.ps
 
 1. Download the Sroups' Wordpress plugin
 2. Extract the archive to your blog's /wp-content/plugins/ directory
-3. From the "Plugins Settings" page, activate Sroups plugin
-4. Click the "Sroups" link from the "Settings" box
-5. If you're already a member of srou.ps, enter your Sroups credentials
+3. Copy the included "crossdomain.xml" to yor site root (http://example.com/crossdomain.xml)
+4. From the "Plugins Settings" page, activate Sroups plugin
+5. Click the "Sroups" link from the "Settings" box
+6. If you're already a member of srou.ps, enter your Sroups credentials
 and click "Get my Sroups data" button. If not, fill out the registration
 form and click "Make me a Sroups owner" button.
-6. Select your Sroups' package, theme and click "Create my Sroups" button
-7. Your Sroups is ready! You can use Sroups as a page or a footer button!
+7. Select your Sroups' package, theme and click "Create my Sroups" button
+8. Your Sroups is ready! You can use Sroups as a page or a footer button!
 
 == Changelog ==
+
+= 0.0.7 =
+Crossdomain.xml file is added. In order to run the flash application, users should put crossdomain.xml to their root directory
 
 = 0.0.6 =
 Fixed the CSS
