@@ -19,11 +19,11 @@
      * The values of these fields in this array will be
      * returned from the service
      */
-    protected function setField($key, $value) {
+    public function setField($key, $value) {
       $this->_fields[$key] = $value;
     }
 
-    protected function getField($key) {
+    public function getField($key) {
       if(isset($this->_fields[$key]))
         return $this->_fields[$key];
       else

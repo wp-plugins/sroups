@@ -43,6 +43,9 @@
         throw new SOS_Request_UnsupportedException("Guid: " . $param . " is not valid or not supported by this request!");
       }
 
+      if (null != $groupId && is_numeric($groupId)) {
+          $this->setGroupId($groupId);
+      }
     }
 
     public function setType($type) {
