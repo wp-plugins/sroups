@@ -1,7 +1,7 @@
 <?php
 
-//error_reporting(E_ALL || E_STRICT);
-//ini_set('display_errors', '1');
+error_reporting(E_ALL || E_STRICT);
+ini_set('display_errors', '0');
 
 /** Include the bootstrap for setting up WordPress environment */
 require_once( dirname(__FILE__) . '/../../../../wp-load.php' );
@@ -20,14 +20,10 @@ $bootstrap->setDebug(false);
 Bootstrap::setBaseUrl(get_bloginfo('url') . '/wp-content/plugins/sroups/rest/');
 
 try {
-    if (!isset($_GET['sauth_sig']))
-        die('Authentication Failed');
-    
-    $signature = get_option('sroups_sig');
-    if(empty ($signature)) die('Authentication Failed');
+    $secret = get_option('sroups_sig');
+    if(empty ($secret)) die('Authentication Failed');
 
-    SOS_Factory::setConsumerSecret(getConsumerSecretFromSignature($signature));
-
+    SOS_Factory::setConsumerSecret($secret);
     SOS_Factory::setDomain($_SERVER['HTTP_HOST']);
     SOS_Factory::setPersonService(new PersonHandler());
     SOS_Factory::setMediaItemService(new MediaItemsHandler());
