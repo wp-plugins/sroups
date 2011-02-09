@@ -35,8 +35,8 @@
       $httpHeaders = $this->getHeaders();
 
       // SAuth operations
-      $sig = (isset($httpHeaders['sauth_sig'])) ? $httpHeaders['sauth_sig'] : null;
-      $timestamp = (isset($httpHeaders['sauth_ts'])) ? $httpHeaders['sauth_ts'] : null;
+      $sig = (isset($_GET['sauth_sig'])) ? $_GET['sauth_sig'] : null;
+      $timestamp = (isset($_GET['sauth_ts'])) ? $_GET['sauth_ts'] : null;
       $originalUri = $this->getAppUri();
 
       $sauth = new SOS_Sauth($originalUri, $timestamp, $sig);

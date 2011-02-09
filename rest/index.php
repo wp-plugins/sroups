@@ -24,6 +24,7 @@ try {
     if(empty ($secret)) die('Authentication Failed');
 
     SOS_Factory::setConsumerSecret($secret);
+    SOS_Factory::setConsumerSecret($secret);
     SOS_Factory::setDomain($_SERVER['HTTP_HOST']);
     SOS_Factory::setPersonService(new PersonHandler());
     SOS_Factory::setMediaItemService(new MediaItemsHandler());
