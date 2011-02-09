@@ -20,10 +20,12 @@ $bootstrap->setDebug(false);
 Bootstrap::setBaseUrl(get_bloginfo('url') . '/wp-content/plugins/sroups/rest/');
 
 try {
+    if (!isset($_GET['sauth_sig']))
+        die('Authentication Failed');
+
     $secret = get_option('sroups_sig');
     if(empty ($secret)) die('Authentication Failed');
 
-    SOS_Factory::setConsumerSecret($secret);
     SOS_Factory::setConsumerSecret($secret);
     SOS_Factory::setDomain($_SERVER['HTTP_HOST']);
     SOS_Factory::setPersonService(new PersonHandler());

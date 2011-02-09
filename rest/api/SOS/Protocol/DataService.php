@@ -14,25 +14,7 @@
   class SOS_Protocol_DataService extends SOS_Protocol_Abstract
   {
 
-    private function getHeaders()
-    {
-        $headers = array();
-        foreach ($_SERVER as $k => $v)
-        {
-            if (substr($k, 0, 5) == "HTTP_")
-            {
-                $k = str_replace('_', ' ', substr($k, 5));
-                $k = str_replace(' ', '_', strtolower($k));
-                $headers[$k] = $v;
-            }
-        }
-        return $headers;
-    }
-
     public function handle() {
-
-      // fetch all headers
-      $httpHeaders = $this->getHeaders();
 
       // SAuth operations
       $sig = (isset($_GET['sauth_sig'])) ? $_GET['sauth_sig'] : null;

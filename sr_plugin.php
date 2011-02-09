@@ -6,7 +6,7 @@ Description: Sroups virtualizes the groups in a way that has never done before.
 In a few minutes, the members of your groups gets access to a virtual world
 specifically created for your community.
 Author: Oyun Studyosu
-Version: 0.0.10
+Version: 0.0.11
 Author URI: http://oyunstudyosu.com
 */
 
@@ -1100,7 +1100,7 @@ XHTML;
             _sr.getJSON(getPostUrl() + "?url=" + Url.encode(Base64.encode(getUrl("/index/package"))), function(data) {
                 _sr.each(data, function(k, v) {
                     _sr("fieldset#fs_sroups_package").append(
-                        _sr("<label>").html('<input type="radio" value="' + v.id + '" name="sr_create_package" id="sr_create_package" />' + v.description + '</label>')
+                        _sr("<label>").html('<input type="radio" value="' + v.id + '" name="sr_create_package" id="sr_create_package_' + v.id + '" />' + v.description + '</label>')
                     ).append(_sr("<br />")); 
                 });
                 _sr("fieldset#fs_sroups_package label:eq(0)").children("input").attr("checked", "checked");
@@ -1108,7 +1108,7 @@ XHTML;
             _sr.getJSON(getPostUrl() + "?url=" + Url.encode(Base64.encode(getUrl("/index/theme"))), function(data) {
                 _sr.each(data, function(k, v) {
                     _sr("fieldset#fs_sroups_theme").append(
-                        _sr("<label>").html('<input type="radio" value="' + v.id + '" name="sr_create_theme" id="sr_create_theme" />' + v.name + '</label>')
+                        _sr("<label>").html('<input type="radio" value="' + v.id + '" name="sr_create_theme" id="sr_create_theme_' + v.id + '" />' + v.name + '</label>')
                     ).append(_sr("<br />")); 
                 });
                 _sr("fieldset#fs_sroups_theme label:eq(0)").children("input").attr("checked", "checked");
@@ -1122,8 +1122,8 @@ XHTML;
                     community_sroupsRestApiUrl: _sr("input#sr_create_apiurl").val(),
                     sroups_uid: _sr("input#sr_create_sroups_uid").val(),
                     sroups_communityType: _sr("input#sr_create_communityType").val(),
-                    sroups_communityTheme: _sr("input#sr_create_theme").val(),
-                    sroups_packageType: _sr("input#sr_create_package").val()
+                    sroups_communityTheme: _sr("input[name=sr_create_theme]:checked").val(),
+                    sroups_packageType: _sr("input[name=sr_create_package]:checked").val()
                 };
                 _sr.ajax({
                     type: "POST",
