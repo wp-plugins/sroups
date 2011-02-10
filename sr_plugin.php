@@ -6,7 +6,7 @@ Description: Sroups virtualizes the groups in a way that has never done before.
 In a few minutes, the members of your groups gets access to a virtual world
 specifically created for your community.
 Author: Oyun Studyosu
-Version: 0.0.11
+Version: 0.0.12
 Author URI: http://oyunstudyosu.com
 */
 
@@ -988,9 +988,8 @@ function sr_admin_showSroupsForm() {
     // if the option has not been set, it is a creation form
     $creation = (get_option('sroups_id')) ? false : true;
 
-    if (!empty($_POST['sid']) && is_numeric($_POST['sid']) && !empty($_POST['sig'])) {
+    if (!empty($_POST['sid']) && is_numeric($_POST['sid'])) {
         update_option('sroups_id', (int) trim($_POST['sid']));
-        update_option('sroups_sig', $_POST['sig']);
         $visibility = (isset($_POST['sr_visibility'])) ? trim($_POST['sr_visibility']) : 'band';
 
         if($visibility == 'both' || $visibility == 'page') {
@@ -1002,6 +1001,7 @@ function sr_admin_showSroupsForm() {
         update_option('sroups_visibility', $visibility);
         
         if($creation){
+            update_option('sroups_sig', $_POST['sig']);
             sr_add_message("Thank you, you have srouped your blog successfully.");
             $creation = false;
         } else {
@@ -1091,7 +1091,8 @@ XHTML;
 XHTML;
 
     // if it is an update request, pass sid
-    $updateSidAddition = (!$creation) ? 'sid: ' . get_option('sroups_id') . ',' : '';
+    $_sid = get_option('sroups_id');
+    $updateSidAddition = (!$creation) ? 'sid: ' . $_sid . ',' : '';
 
     $outputBuffer .= <<<JS
     <script type="text/javascript">
@@ -1103,7 +1104,20 @@ XHTML;
                         _sr("<label>").html('<input type="radio" value="' + v.id + '" name="sr_create_package" id="sr_create_package_' + v.id + '" />' + v.description + '</label>')
                     ).append(_sr("<br />")); 
                 });
-                _sr("fieldset#fs_sroups_package label:eq(0)").children("input").attr("checked", "checked");
+                _sr.ajax({
+                    url: getGetUrl() + "?url=" + Url.encode(Base64.encode(getUrl("/sroups/sid/$_sid"))),
+                    dataType: "json",
+                    success: function(data) {
+                        if (data && data.sroups_packageId) {
+                            _sr("input#sr_create_package_" + data.sroups_packageId).attr("checked", "checked");
+                        } else {
+                            _sr("fieldset#fs_sroups_package label:eq(0)").children("input").attr("checked", "checked");
+                        }
+                    },
+                    error: function(data) {
+                        _sr("fieldset#fs_sroups_package label:eq(0)").children("input").attr("checked", "checked");
+                    }
+                });
             });
             _sr.getJSON(getPostUrl() + "?url=" + Url.encode(Base64.encode(getUrl("/index/theme"))), function(data) {
                 _sr.each(data, function(k, v) {
@@ -1111,7 +1125,20 @@ XHTML;
                         _sr("<label>").html('<input type="radio" value="' + v.id + '" name="sr_create_theme" id="sr_create_theme_' + v.id + '" />' + v.name + '</label>')
                     ).append(_sr("<br />")); 
                 });
-                _sr("fieldset#fs_sroups_theme label:eq(0)").children("input").attr("checked", "checked");
+                _sr.ajax({
+                    url: getGetUrl() + "?url=" + Url.encode(Base64.encode(getUrl("/sroups/sid/$_sid"))),
+                    dataType: "json",
+                    success: function(data) {
+                        if (data && data.sroups_themeId) {
+                            _sr("input#sr_create_theme_" + data.sroups_themeId).attr("checked", "checked");
+                        } else {
+                            _sr("fieldset#fs_sroups_theme label:eq(0)").children("input").attr("checked", "checked");
+                        }
+                    },
+                    error: function(data) {
+                        _sr("fieldset#fs_sroups_theme label:eq(0)").children("input").attr("checked", "checked");
+                    }
+                });
             });
             _sr("input#sr_submit_creation").click(function() {
                 var requestData = {
@@ -1596,6 +1623,10 @@ function sr_common_script() {
 
         function getPostUrl(url) {
             return "../wp-content/plugins/sroups/proxy/post.php";
+        }
+
+        function getGetUrl(url) {
+            return "../wp-content/plugins/sroups/proxy/get.php";
         }
 </script>
 JS;
