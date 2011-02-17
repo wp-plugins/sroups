@@ -151,8 +151,8 @@
 
     private function _getProtocolHelper($index) {
       $res = $this->getParam($index);
-      if(!$res)
-        throw new SOS_Request_InvalidException("Invalid URL: " . $this->getRequestUri());
+      //if(!$res)
+      //  throw new SOS_Request_InvalidException("Invalid URL: " . $this->getRequestUri());
       return $res;
     }
 

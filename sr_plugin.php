@@ -6,7 +6,7 @@ Description: Sroups virtualizes the groups in a way that has never done before.
 In a few minutes, the members of your groups gets access to a virtual world
 specifically created for your community.
 Author: Oyun Studyosu
-Version: 0.0.12
+Version: 0.0.13
 Author URI: http://oyunstudyosu.com
 */
 
@@ -143,7 +143,7 @@ JS;
     bottom:0;
     float:left;
     margin:0 5px 22px 0;
-    position:absolute;
+    position:fixed;
     right:0;
     height: 645px;
     width:780px;

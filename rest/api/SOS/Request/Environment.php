@@ -15,9 +15,10 @@
       parent::__construct($protocol);
 
       $this->_guid =
-              new SOS_Request_Guid(
-                      $this->getProtocol()->getGuidParam(),
-                      array(SOS_Request_Guid::COMMUNITY));
+                new SOS_Request_Guid(
+                        $this->getProtocol()->getGuidParam(),
+                        array(SOS_Request_Guid::ME),
+                        $this->getProtocol()->getScopeParam());
 
     }
 
@@ -32,7 +33,7 @@
     public function execute($json = true) {
       $environmentService = SOS_Factory::getEnvironmentService();
       $res = $environmentService->getEnvironment($this->_guid);
-
+      
       return $res->getJSONObject();
     }
   }

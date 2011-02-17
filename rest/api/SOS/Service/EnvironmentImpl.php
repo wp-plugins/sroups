@@ -30,9 +30,48 @@
     private function  __construct() {}
 
     public function getEnvironment(SOS_Request_Guid $guid) {
-      $e = new SOS_Model_Environment();
-      $e->setDomain(SOS_Factory::getDomain());
-      $e->setFields(array('people', 'mediaItems', 'environment'));
-      return $e;
+      return $this->getDelegator()->getEnvironment($guid);
     }
+
+    /**
+     *
+     * @return SOS_Service_MediaItem
+     */
+    public function getDelegator() {
+      if($this->_delegator == null) {
+        throw new SOS_Exception("Missing delegator class");
+      }
+      return $this->_delegator;
+    }
+
+    /**
+     * Sets the delegator
+     * @return SOS_Service_MediaItem
+     */
+    public function setDelegator(SOS_Service_Environment $delegator) {
+      $this->_delegator = $delegator;
+      return $this;
+    }
+
+    /**
+     *
+     * @param String $field
+     * @return boolean
+     */
+    public function supportsField($field) {
+      return $this->getDelegator()->supportsField($field);
+    }
+
+    /**
+     * returns the domain name
+     * @return String
+     */
+    public function getDomain() {
+      return $this->getDelegator()->getDomain();
+    }
+
+    public function  getSupportedFields() {
+      return $this->getDelegator()->getSupportedFields();
+    }
+    
   }

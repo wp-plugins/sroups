@@ -30,6 +30,8 @@ try {
     SOS_Factory::setDomain($_SERVER['HTTP_HOST']);
     SOS_Factory::setPersonService(new PersonHandler());
     SOS_Factory::setMediaItemService(new MediaItemsHandler());
+    SOS_Factory::setEnvironmentService(new EnvironmentHandler());
+    //SOS_Factory::set
     echo $bootstrap->dispatch();
 } catch (Exception $ex) {
     echo $ex->getMessage();

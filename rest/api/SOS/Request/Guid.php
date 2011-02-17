@@ -32,8 +32,10 @@
         $this->setUserId($userId);
         return;
       }
-
-      if(is_string($param)) {
+      
+      if(empty($validTypes) && empty($param)) {
+        // this is a valid request, guid can be optional
+      }elseif(is_string($param)) {
         // check if it is a valid type
         if(!in_array(strtolower($param), $validTypes)) {
           throw new SOS_Request_UnsupportedException("Guid: " . $param . " is not supported for this request!");

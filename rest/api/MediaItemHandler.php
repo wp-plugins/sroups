@@ -1,52 +1,64 @@
 <?php
 
-  /*
-   * Please see Oyun Studyosu License file
-   */
+/*
+ * Please see Oyun Studyosu License file
+ */
 
-  require_once(APP_PATH . '/SOS/Service/MediaItem.php');
-  require_once(APP_PATH . '/SOS/Model/MediaItem.php');
-  require_once(APP_PATH . '/SOS/Request/Guid.php');
+require_once(APP_PATH . '/SOS/Service/MediaItem.php');
+require_once(APP_PATH . '/SOS/Model/MediaItem.php');
+require_once(APP_PATH . '/SOS/Request/Guid.php');
 
-  class MediaItemHandler implements SOS_Service_MediaItem {
+class MediaItemHandler implements SOS_Service_MediaItem
+{
 
     /**
-     *
+     * Used to instantiate a new SOS media item model and populate it
+     * with data.
+     * 
      * @param SOS_Request_Guid $guid
      * @return SOS_Model_Person
      */
     public function getMediaItems(SOS_Request_Guid $guid) {
-      $mitems = array();
+        // media items array. possible item types are as follows:
+        // - SOS_Model_MediaItem::TYPE_AUDIO
+        // - SOS_Model_MediaItem::TYPE_IMAGE
+        // - SOS_Model_MediaItem::TYPE_VIDEO
+        $mitems = array();
 
-      $mi = new SOS_Model_MediaItem();
-      $mi->setDescription("My smaple description");
-      $mi->setId("12345678");
-      $mi->setThumbnailUrl("http://example.com/myThumb.png");
-      $mi->setTitle("My sample title");
-      $mi->setUrl("http://www.example.com");
+        // create a new SOS media item model instance
+        $mi = new SOS_Model_MediaItem();
 
-      array_push($mitems, $mi);
+        // set the description
+        $mi->setDescription("Sample photo");
 
-      $mi = new SOS_Model_MediaItem();
-      $mi->setDescription("My smaple description 2");
-      $mi->setId("45645645645");
-      $mi->setThumbnailUrl("http://example.com/myThum1b.png");
-      $mi->setTitle("My sample title 1");
-      $mi->setUrl("http://www.example.com");
+        // set the unique identifier for the media item handler
+        $mi->setId("12345678");
 
-      array_push($mitems, $mi);
+        // set the thumbnail image URL
+        $mi->setThumbnailUrl("http://example.com/myThumb.png");
 
-      return $mitems;
+        // set the title
+        $mi->setTitle("My sample title");
+
+        // set the image URL
+        $mi->setUrl("http://www.example.com");
+
+        // add the item to the items array
+        array_push($mitems, $mi);
+
+        return $mitems;
     }
 
     /**
+     * Used to add a new media item to the items array and store it on the
+     * custom website.
      *
      * @param SOS_Request_Guid $guid
      * @param SOS_Model_MediaItem $item
      * @return boolean
      */
     public function addMediaItem(SOS_Request_Guid $guid, SOS_Model_MediaItem $item) {
-      return TRUE;
+        return TRUE;
     }
 
-  }
+}

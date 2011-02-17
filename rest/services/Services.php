@@ -7,6 +7,7 @@
   require_once(APP_PATH . '/SOS/Request/Guid.php');
   require_once(APP_PATH . '/SOS/Model/Person.php');
   require_once(APP_PATH . '/SOS/Model/MediaItem.php');
+  require_once(APP_PATH . '/SOS/Model/Environment/Data.php');
   
 
   function getPost($val) {
@@ -207,7 +208,31 @@
   class EnvironmentHandler implements SOS_Service_Environment {
 
     public function getEnvironment(SOS_Request_Guid $guid) {
-      // @not yet implemented
+      $data = new SOS_Model_Environment_Data();
+      $data->setContainerName(get_bloginfo());
+
+      $env = new SOS_Model_Environment();
+      $env->setDomain($this->getDomain());
+      $env->setEnvironment($data);
+      $env->setFields($this->getSupportedFields());
+
+      return $env;
+    }
+
+    public function supportsField($field) {
+      return in_array($field, $this->getSupportedFields());
+    }
+
+    public function getSupportedFields() {
+      return array('people', 'mediaItems');
+    }
+
+    /**
+     * returns the domain name ex: orkut.com
+     * @return String
+     */
+    public function getDomain() {
+      return $_SERVER['HTTP_HOST'];
     }
 
   }

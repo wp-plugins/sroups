@@ -66,6 +66,10 @@
       return SOS_Service_EnvironmentImpl::getInstance();
     }
 
+    public static function setEnvironmentService(SOS_Service_Environment $environmentService) {
+      SOS_Service_EnvironmentImpl::getInstance()->setDelegator($environmentService);
+    }
+
     public static function getConsumerSecret() {
       return SOS_Factory::$_consumerSecret;
     }

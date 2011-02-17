@@ -7,6 +7,6 @@
   {
     public function  __construct($message = "") {
       parent::__construct($message);
-      header("HTTP/1.1 404 Not Found");
+      header("HTTP/1.1 500 Internal Server Error");
     }
   }
