@@ -5,9 +5,9 @@ Plugin URI: http://srou.ps
 Description: Sroups virtualizes the groups in a way that has never done before.
 In a few minutes, the members of your groups gets access to a virtual world
 specifically created for your community.
-Author: Oyun Studyosu
-Version: 0.0.13
-Author URI: http://oyunstudyosu.com
+Author: Sroups
+Version: 0.0.14
+Author URI: http://srou.ps
 */
 
 // administrator check

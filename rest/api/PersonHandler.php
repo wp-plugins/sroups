@@ -41,20 +41,20 @@ class PersonHandler implements SOS_Service_Person
         $person->setAnonymous(false);
 
         // set the profile url (on your website) for the person.
-        $person->setProfileUrl("http://www.example.com/profile/suleyman");
+        $person->setProfileUrl("http://www.example.com/profile/example");
 
         // set the real name of the person. it will be shown to other users
         // when they want to see the person's profile badge in the game.
-        $person->setName("Oyun Studyosu");
+        $person->setName("Example Name");
 
         // set the thumbnail version of the profile picture of the person.
-        $person->setThumbnailUrl("http://www.example.com/profile/suleyman/pic/1.jpg");
+        $person->setThumbnailUrl("http://www.example.com/profile/example/pic/1.jpg");
 
         // set the medium size version of the profile picture of the person.
-        $person->setMediumUrl("http://www.example.com/profile/suleyman/pic/1.jpg");
+        $person->setMediumUrl("http://www.example.com/profile/example/pic/1.jpg");
 
         // set the original version of the profile picture of the person.
-        $person->setLargeUrl("http://www.example.com/profile/suleyman/pic/1.jpg");
+        $person->setLargeUrl("http://www.example.com/profile/example/pic/1.jpg");
 
         // set the type of the person. possible values are:
         // SOS_Model_Person::USER_TYPE_ANONYMOUS

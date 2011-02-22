@@ -1,6 +1,6 @@
 <?php
 /* 
- * Please see Oyun Studyosu License file
+ * Please see Sroups License file
  */
   require_once(APP_PATH . '/SOS/Service/Person.php');
   require_once(APP_PATH . '/SOS/Service/MediaItem.php');

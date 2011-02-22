@@ -1,12 +1,11 @@
 <?php
 /* 
- * Please see oyunstudyosu license file
+ * Please see Sroups license file
  */
 
 /**
  * Description of EnvironmentHandler
  *
- * @author suleymanmelikoglu [at] oyunstudyosu.com
  */
 class EnvironmentHandler implements SOS_Service_Environment {
     

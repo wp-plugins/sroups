@@ -1,6 +1,6 @@
 <?php
 /* 
- * Please see Oyun Studyosu License file
+ * Please see Sroups License file
  */
 
   class SOS_Service_NotImplementedException extends Exception

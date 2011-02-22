@@ -1,6 +1,6 @@
 <?php
 /* 
- * Please see Oyun Studyosu License file
+ * Please see Sroups License file
  */
   // Define path to application directory
   defined('APP_PATH')

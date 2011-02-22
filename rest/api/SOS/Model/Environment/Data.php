@@ -1,12 +1,11 @@
 <?php
 /* 
- * Please see oyunstudyosu license file
+ * Please see Sroups license file
  */
 
 /**
  * Description of Data
  *
- * @author suleymanmelikoglu [at] oyunstudyosu.com
  */
 class SOS_Model_Environment_Data {
 

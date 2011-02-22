@@ -1,6 +1,6 @@
 <?php
 /* 
- * Please see Oyun Studyosu License file
+ * Please see Sroups License file
  */
 
   interface SOS_Model_Interface

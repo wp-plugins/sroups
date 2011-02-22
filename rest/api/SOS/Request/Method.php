@@ -1,6 +1,6 @@
 <?php
 /* 
- * Please see oyunstudyosu license file
+ * Please see Sroups license file
  */
 
 class SOS_Request_Method
